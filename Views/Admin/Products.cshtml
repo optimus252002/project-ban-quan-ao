@@ -1,0 +1,82 @@
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model Product_Store.Controllers.AdminController.ProductsViewModel
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Sản phẩm</h1>
+<p class="mb-4">Hiển thị danh sách sản phẩm</p>
+
+<!-- End Page Heading -->
+<a style="margin-bottom: 20px;" href="/admin/CreateProduct" class="btn btn-primary btn-icon-split btn-sm">
+    <span class="icon text-white-30">
+        <i class="fas fa-plus"></i>
+    </span>
+    <span class="text">Thêm sản phẩm</span>
+</a>
+                    <!-- Page Heading -->
+                <div class="container-fluid">
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Dữ liệu bảng</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên</th>
+                                            <th>Thương hiệu</th>
+                                            <th>Danh mục</th>
+                                            <th>Ảnh</th>
+                                            <th>Giá</th>
+                                            <th>Số lượng</th> 
+                                            <th>Mô tả</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        @foreach (var item in Model.products)
+                                        {
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            <td>@foreach (var producer in Model.producers)
+                                            {
+                                                if (@producer.Id == @item.ProducerId)
+                                                {
+                                                    @producer.Name;                                                    
+                                                }
+                                            }</td>
+                                            <td>@foreach (var cate in Model.categories)
+                                            {
+                                                if (@cate.Id == @item.CategoryId)
+                                                {
+                                                    @cate.Name;                                                    
+                                                }
+                                            }</td>
+                                            <td> <img src=" @item.Image" alt="" style="width: 60px;"> </td>
+                                            <td>@item.Price</td>
+                                            <td>@item.Number</td>
+                                            <td>@item.Discription</td>
+                                            <td>
+                                                <a href="/Admin/UpdateProduct/@item.Id" class="btn btn-info btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                    <span class="text">Sửa</span>
+                                                </a>
+                                                <a href="/Admin/DeleteProduct/@item.Id" class="btn btn-danger btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                    <span class="text">Xóa</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>

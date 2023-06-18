@@ -1,0 +1,163 @@
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+@* <div class="slider">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-indicators">
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+aria-current="true" aria-label="Slide 1"></button>
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+</div>
+<div class="carousel-inner" style="width: 100%; height: 500px;">
+<div class="carousel-item active">
+<img src="../../home/img/351556155_1232122420783435_2924817918316517046_n.jpg" class="d-block w-100" alt="...">
+</div>
+<div class="carousel-item">
+<img src="../../home/img/351820389_805201877981780_8601916664557767409_n.jpg" class="d-block w-100" alt="...">
+</div>
+<div class="carousel-item">
+<img src="../../home/img/352359412_571237131832072_4841201134883708445_n.jpg" class="d-block w-100" alt="...">
+</div>
+<div class="carousel-item">
+<img src="../../home/img/352674824_810040140479435_2417927217241138341_n.jpg" class="d-block w-100" alt="...">
+</div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Next</span>
+</button>
+</div>
+</div> *@
+
+<div class="products">
+    @* <div class="search">
+    <form action="/Productstore/search" method="get">
+    <div class="input-group mb-3">
+    <input type="text" name="s" class="form-control" placeholder="Tìm kiếm sản phẩm" aria-label="Recipient's username"
+    aria-describedby="basic-addon2">
+    <div class="input-group-append">
+    <button style="height:37px" class="btn fa-solid fa-magnifying-glass btn-outline-secondary" type="submit"></button>
+    </div>
+
+    </div>
+    </form>
+    </div> *@
+
+    <h1 style="background: white;">Sản phẩm</h1>
+    <div class="container">
+        <div class="row">
+            <div class="container">
+                <div style="margin: 24px 0px;color: #052948;font-style: oblique;"
+                    class="row row-cols-md-4 row-cols-1 row-cols-sm-2">
+                    @foreach (var item in Model.products)
+                    {
+                        <div class="col">
+                            <div class="the">
+                                <ul>
+                                    <li><a href="#">
+                                            <img height="190px" width="cover" src="@item.Image" alt="">
+                                        </a></li>
+                                    <div class="imgs">
+                                        <a href="">
+                                            <i class="them fa-sharp fa-solid fa-cart-plus"></i>
+                                        </a>
+                                        <a href="http://localhost:5129/productstore/chitiet?id=@item.Id&product=@item.Name">
+                                            <i class="xem fa-solid fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </ul>
+                                <span style="font-weight: 500;">@item.Name</span>
+                                <p>@item.Price VNĐ</p>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: #f1e6e2;padding: 24px;" class="footer">
+        <div id="content" class="content-section">
+            <div style="text-align: center;">
+                <h2 class="section-heading">LIÊN HỆ</h2>
+                <p style="   font-style: italic; opacity: 0.6;font-size: 14px;" class="section-sub-heading">Chúng tôi
+                    rất mong nhận được phản hồi từ bạn!</p>
+            </div>
+
+
+            <div style="display:  flex; justify-content: space-between; margin-top: 32px;" class="content-contact">
+                <div class="contact">
+                    <p><i style="" class="icon-contact fa fa-map-marker"></i>Hà Đông, Hà Nội</p>
+                    <p><i class="icon-contact fa fa-phone"></i>Phone: +00 151515</p>
+                    <p><i class="icon-contact fa fa-envelope"></i>Email: mail@mail.com</p>
+                </div>
+
+                <form style="display: block; border: none; background-color: #f1e6e2;" class="information" action="">
+                    <div class="name-email">
+                        <input type="text" name="Name" placeholder="Name" required id="" class="name">
+                        <input type="email" name="Email" placeholder="Email" required id="" class="email">
+                    </div>
+                    <div class="message">
+                        <input style="width: 100%; padding: 6px;" type="text" name="Message" placeholder="Message"
+                            required id="" class="message-row">
+                    </div>
+                    <div>
+                        <button class="submit-send" type="submit">SEND</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div style="text-align: center;" class="social">
+            <a href=""><i class="fab fa-facebook-square"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href=""><i class="fab fa-youtube"></i></a>
+            <a href=""><i class="fab fa-pinterest-p"></i></a>
+            <a href=""><i class="fab fa-telegram-plane"></i></a>
+            <a href=""><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div class="end-footer">
+            <p class="content-footer"> <a href="" class="link-footer"> </a></p>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js"
+    integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+<script>
+    if (sessionStorage.getItem('user') == sessionStorage.getItem('user') && sessionStorage.getItem('user') != null && sessionStorage.getItem('pass') == sessionStorage.getItem('pass')) {
+        console.log('fdsnfnd')
+        $('body').show()
+    } else {
+        $('body').hide()
+    }
+</script>
+
+<style>
+    .icon-contact {
+        margin-right: 12px;
+    }
+
+    .message {
+        margin-top: 10px;
+        margin-bottom: 12px;
+    }
+
+    .name-email input {
+        padding: 6px;
+    }
+
+    .submit-send {
+        float: right;
+        width: 91px;
+        height: 33px;
+        border: none;
+        border: 1px solid #ccc;
+        background-color: #e7b4b0;
+    }
+</style>

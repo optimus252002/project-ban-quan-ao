@@ -1,0 +1,30 @@
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model Product_Store.Controllers.AdminController.FormSaveNewProducer
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Tạo thương hiệu mới</h1>
+<p class="mb-4">Thêm thương hiệu</p>
+<!-- End Page Heading -->
+<form action="/Admin/SaveNewProducer" method="post">
+    <div class="form-group">
+        <label for="nameInput">Tên thương hiệu</label>
+        <input type="text" class="form-control" id="nameInput" name="name" placeholder="Vui lòng điền tên thương hiệu">
+    </div>
+    <div class="descriptionInput">
+        <label for="descriptionInput">Mô tả</label>
+        <textarea type="text" class="form-control" id="descriptionInput" name="description"  cols="30" rows="10" ></textarea>
+    </div>
+    <br>
+    <a href="/Admin/SaveNewCategory" class="btn btn-secondary btn-icon-split btn-md">
+        <span class="icon text-white-30">
+            <i class="fas fa-arrow-left"></i>
+        </span>
+        <span class="text">Trở lại</span>
+    </a>
+    <button type="submit" class="btn btn-primary btn-icon-split btn-md">
+    <span class="icon text-white-30">
+        <i class="fas fa-plus"></i>
+    </span>
+    <span class="text">Tạo</span>
+</form>

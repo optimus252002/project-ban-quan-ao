@@ -1,0 +1,72 @@
+﻿@model Product_Store.ViewModel.Cart.CartViewModel
+@{
+    Layout = null;
+}
+<section class="pd-5">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <form asp-area="" asp-controller="Cart" asp-action="Checkout" method="POST">
+                    @if (Model.Items.Count > 0)
+                    {
+                        <table border="1
+                        " class="table">
+                            <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                  
+                                    <th>Số lượng</th>
+                                   
+                                    <th>Giá</th>
+                                    <th>Tổng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Items)
+                                {
+                                    <tr>
+                                        <td><img src="~/media//products/@item.Image" height="100px;" width="147px;" />
+                                            @item.ProductName
+                                        </td>                                    
+                                        <td>
+                                            @item.Number
+                                            <a class="btn btn-primary btn-sm" asp-action="Add" asp-route-id="@item.ProductId">+</a>
+                                            <a class="btn btn-info btn-sm" asp-action="Decrease" asp-route-id="@item.ProductId">-</a>
+                                            <a class="btn btn-danger btn-sm" asp-action="Remove" asp-route-id="@item.ProductId"><i class="fa-solid fa-trash"></i></a>
+                                        </td>
+                                        <td>@item.Price.ToString("C2")</td>
+
+                                        <td>@Model.Items.Where(x => x.ProductId == item.ProductId).Sum(x => x.Number * x.Price).ToString("C2")</td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td class="text-right" colspan="6"><label asp-for="@Model.GrandTotal">Tổng thanh toán: @Model.GrandTotal</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right" colspan="6">
+                                        <a class="btn btn-danger" asp-action="Clear">Xóa giỏ hàng</a>
+
+                                        <button type="submit" class="main_btn">Mua</button>
+
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <h2>Giỏ hàng không có sản phẩm nào!</h2>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .table {
+        width: 100%;
+        
+    }
+</style>

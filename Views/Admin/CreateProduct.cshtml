@@ -1,0 +1,66 @@
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model Product_Store.Controllers.AdminController.CategoriesProducersViewModel
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Tạo sản phẩm mới</h1>
+<p class="mb-4">Thêm sản phẩm</p>
+<!-- End Page Heading -->
+<form action="/Admin/SaveNewProduct" method="post">
+    <div class="form-group">
+        <label for="nameInput">Tên</label>
+        <input type="text" class="form-control" id="nameInput" name="Name" placeholder="Vui lòng điền tên sản phẩm">
+    </div>
+    <div class="descriptionInput">
+        <label for="descriptionInput">Danh mục</label>
+       @* <label for="cars">Choose a car:</label> *@
+        <select class="form-control" name="CategoryId" id="">
+            @foreach (var item in Model.categories)
+            {
+                <option class="form-control" value="@item.Id">@item.Name</option>
+                
+            }
+        </select>
+    </div>  
+    <div class="descriptionInput">
+        <label for="descriptionInput">Thương hiệu</label>
+        <select class="form-control" name="ProducerId" id="">
+            @foreach (var item in Model.producers)
+            {
+                <option class="form-control" value="@item.Id">@item.Name</option>
+                
+            }
+        </select>
+    </div>
+      <div class="descriptionInput">
+        <label for="descriptionInput">Ảnh</label>
+        <input type="text" class="form-control" id="descriptionInput" name="Image" placeholder="Vui lòng nhập địa chỉ">
+    </div>
+      <div class="descriptionInput">
+        <label for="descriptionInput">Giá tiền</label>
+        <input type="text" class="form-control" id="descriptionInput" name="Price" placeholder="Vui lòng nhập ">
+    </div>
+      <div class="descriptionInput">
+        <label for="descriptionInput">Số lượng</label>
+        <input type="text" class="form-control" id="descriptionInput" name="Number" placeholder="Vui lòng nhập ">
+    </div>
+      <div class="descriptionInput">
+        <label for="descriptionInput">Mô tả</label>
+        <textarea type="text" class="form-control" id="descriptionInput" name="Discription"  cols="30" rows="10"></textarea>
+    </div>
+
+
+    <br>
+    <a href="/Admin/Products" class="btn btn-secondary btn-icon-split btn-md">
+        <span class="icon text-white-30">
+            <i class="fas fa-arrow-left"></i>
+        </span>
+        <span class="text">Trở lại</span>
+    </a>
+    <button type="submit" class="btn btn-primary btn-icon-split btn-md">
+    <span class="icon text-white-30">
+        <i class="fas fa-plus"></i>
+    </span>
+    <span class="text">Tạo</span>
+</form>

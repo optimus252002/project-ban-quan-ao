@@ -30,7 +30,6 @@ public class AdminController : Controller
             var categoriesViewModel = new CategoriesViewModel();
             //b2 load du lieu tu db
             var categories = _context.Categories.ToList();
-            Console.Write("Hello");
             //b3 ganw laij duwx lieeuj vao doi tuong
             categoriesViewModel.categories = categories;
             //b4 return l
